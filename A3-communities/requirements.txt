@@ -1,3 +1,6 @@
-igraph
 networkx
 python-igraph
+cairocffi
+matplotlib
+scipy
+python-louvain

@@ -113,6 +113,10 @@ def saveGraphImageReference(network, pos, network_name, partition_reference, out
 def saveGraphImage(partition_reference, communities, modularity, network, pos, network_name, algorithm_name, outputdir):
     graph_title = f'{network_name} - {algorithm_name} algorithm - Modularity {modularity}'
     
+
+    danon = None    
+    nvi = None
+    ji = None
     if(partition_reference != None):
         danon = ig.compare_communities(partition_reference, communities, method='danon')       
         nvi = ig.compare_communities(partition_reference, communities, method='vi')/math.log(len(network))
@@ -132,6 +136,8 @@ def saveGraphImage(partition_reference, communities, modularity, network, pos, n
     plt.savefig(out_file)
     plt.close(fig)
 
+
+    return danon, nvi, ji
 def saveCluster(community, algorithm_name, network_name, outputdir):
     directory = os.path.join(outputdir, 'clusters', network_name)
     if not os.path.exists(directory):
@@ -142,3 +148,17 @@ def saveCluster(community, algorithm_name, network_name, outputdir):
     with open(out_file, 'w') as f:
         f.write(f'*Vertices {len(community)}\n')
         f.writelines(f"{c+1}\n" for c in community)
+
+def saveMetrics(networks, outputdir):
+    directory = os.path.join(outputdir, 'metrics')
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    
+    out_file = os.path.join(directory, 'network-metrics.txt') 
+    with open(out_file, 'w') as f:
+        f.write('NetworkName\tClauset-Newman-Moore-Modularity\tClauset-Newman-Moore-danon\tClauset-Newman-Moore-nvi\tClauset-Newman-Moore-ji\tLouvain-Modularity\tLouvain-danon\tLouvain-nvi\tLouvain-ji\tInfomap-Modularity\tInfomap-danon\tInfomap-nvi\tInfomap-ji\n')
+        for network in networks:
+            f.write(f'{network["network_name"]}\t')
+            f.write(f' {network["metrics"]["Clauset-Newman-Moore"][0]}\t{network["metrics"]["Clauset-Newman-Moore"][1]}\t{network["metrics"]["Clauset-Newman-Moore"][2]}\t{network["metrics"]["Clauset-Newman-Moore"][3]}\t')
+            f.write(f' {network["metrics"]["Louvain"][0]}\t{network["metrics"]["Louvain"][1]}\t{network["metrics"]["Louvain"][2]}\t{network["metrics"]["Louvain"][3]}\t')
+            f.write(f' {network["metrics"]["Infomap"][0]}\t{network["metrics"]["Infomap"][1]}\t{network["metrics"]["Infomap"][2]}\t{network["metrics"]["Infomap"][3]}\t\n')

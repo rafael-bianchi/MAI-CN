@@ -31,6 +31,8 @@ def run_community_dect_alg1(network, pos, network_name, partition_reference, out
 
     modularity = community.modularity(com_dict, network)
 
-    utils.saveGraphImage(partition_reference, com_linear, modularity, network, pos, network_name, algorithm_name, outputdir)
+    danon, nvi, ji = utils.saveGraphImage(partition_reference, com_linear, modularity, network, pos, network_name, algorithm_name, outputdir)
 
     utils.saveCluster(com_linear, algorithm_name, network_name, outputdir)
+
+    return modularity, danon, nvi, ji

@@ -15,6 +15,12 @@ def plot(network_path, p_sequence, betas, recover_probability, p_0):
     plt.plot(betas, p_sequence, 'o-')
     plt.xlabel('β')
     plt.ylabel('P')
+
+    plt.xlim(0, 1.0) 
+    plt.ylim(0, 1.0)
+
+    plt.grid()
+
     plt.title(netname + ', SIS(μ=%.1f, P0=%.1f)' % (recover_probability, p_0))
     plt.savefig(out_file)
     plt.close()

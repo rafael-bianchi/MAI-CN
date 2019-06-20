@@ -4,6 +4,7 @@ import cn_project.congressman as cm
 import cn_project.parties as parties
 import cn_project.proposition as propostions
 import cn_project.voting as voting
+import networkx as nx
 
 def refresh_data():
     #States & positions dic

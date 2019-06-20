@@ -79,7 +79,7 @@ plt.show()
 
 
 ###########################################################################
-# Start - Parties - Community detection and ploting 
+# Start - States - Community ploting 
 ###########################################################################
 g_states = nx.Graph(nx.read_pajek('cn_project/data/g_states.net'))
 x = nx.get_node_attributes(g_states, 'x')
@@ -125,16 +125,5 @@ plt.show()
 
 
 ###########################################################################
-# End - Parties - Community detection and ploting 
+# End - States - ploting 
 ###########################################################################
-
-
-# nx.draw(g_parties, pos=nx.spring_layout(g_parties))
-# plt.draw()  # pyplot draw(
-# plt.show()
-
-# g_congressmen = nx.Graph(nx.read_pajek( 'cn_project/data/voting_relation_congressmen.net'))
-
-# g_states = nx.Graph(nx.read_pajek( 'cn_project/data/g_states.net'))
-
-#%%

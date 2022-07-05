@@ -1,5 +1,5 @@
 # Complex Networks
-https://www.fib.upc.edu/en/studies/masters/master-artificial-intelligence/curriculum/syllabus/CN-MAI
+This course is part of the Master in Artificial Intelligence @ UPC -> https://www.fib.upc.edu/en/studies/masters/master-artificial-intelligence/curriculum/syllabus/CN-MAI
 
 ### Course content
 1. Introduction
